@@ -49,3 +49,11 @@
 .o::after{
     content: 'O';
 }
+
+.disabled {
+    cursor: not-allowed;
+}
+
+.cell:not(.disabled):hover {
+    background: #343434;
+}
