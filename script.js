@@ -30,4 +30,25 @@ document.addEventListener('click', (e) => {
         target.classList.add('disabled');
         game.xTurn = !game.xTurn;
     }
+
+    if (!document.querySelectorAll('.cell:not(.disabled)').length) {
+        document.querySelector('.game-over').classList.add('visible');
+        document.querySelector('.game-over-text').textContent = 'Draw!';
+    }
+
+    // Loop through each winning state. Check whether the xState and oState includes each 
+    // of the elements in a winning state
+
+    game.winningStates.forEach(winningState => {
+        const xWins = winningState.every(state => game.xState.includes(state));
+        const oWins = winningState.every(state => game.oState.includes(state));
+
+        if (xWins || oWins){
+            document.querySelectorAll('.cell').forEach(cell => cell.classList.add('.disabled'));
+            document.querySelector('.game-over').classList.add('visible');
+            document.querySelector('.board').style.display = 'none';
+            document.querySelector('.game-over-text').textContent = xWins ? 'X Wins!': 'O Wins';
+        }
+    })
 })
+

@@ -80,3 +80,10 @@
 .visible {
     display: block;
 }
+
+button{
+    width: 200px;
+    padding: 10px 20px;
+    background-color: aqua;
+    border-radius: 5px;
+}
